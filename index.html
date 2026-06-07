@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Ranjith ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== CANVAS LAYERS ===================== -->
+  <canvas id="confettiCanvas"></canvas>
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ===================== FLOATING ELEMENTS ===================== -->
+  <div class="floating-hearts-container" id="floatingHearts"></div>
+  <div class="balloons-container" id="balloons"></div>
+
+  <!-- ===================== MUSIC PLAYER ===================== -->
+  <div class="music-player" id="musicPlayer">
+    <div class="music-disc" id="musicDisc">🎵</div>
+    <div class="music-controls">
+      <button class="btn-music" id="playPauseBtn" onclick="toggleMusic()">▶</button>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5" oninput="setVolume(this.value)" />
+    </div>
+    <div class="music-label">Birthday Song</div>
+    <audio id="bgMusic" loop>
+      <!-- Add your audio file: <source src="birthday.mp3" type="audio/mpeg"> -->
+    </audio>
+  </div>
+
+  <!-- ===================== HERO SECTION ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-subtitle">✦ A Special Day For ✦</div>
+      <h1 class="hero-name" id="heroName">RANJITH</h1>
+      <div class="hero-divider">
+        <span class="divider-line"></span>
+        <span class="divider-gem">❤️</span>
+        <span class="divider-line"></span>
+      </div>
+      <h2 class="hero-title">Happy Birthday</h2>
+      <p class="hero-message" id="typingText"></p>
+      <div class="hero-date">20 June 🎂</div>
+      <a href="#gallery" class="hero-cta">Explore the Memories ↓</a>
+    </div>
+    <div class="scroll-hint">scroll</div>
+  </section>
+
+  <!-- ===================== COUNTDOWN ===================== -->
+  <section class="countdown-section" id="countdown-section">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">⏳ Next Birthday</span>
+      <h2>Counting Every Moment</h2>
+    </div>
+    <div class="countdown-grid" id="countdownGrid" data-aos="zoom-in" data-aos-delay="200">
+      <div class="countdown-card"><span id="cdDays">00</span><label>Days</label></div>
+      <div class="countdown-card"><span id="cdHours">00</span><label>Hours</label></div>
+      <div class="countdown-card"><span id="cdMins">00</span><label>Minutes</label></div>
+      <div class="countdown-card"><span id="cdSecs">00</span><label>Seconds</label></div>
+    </div>
+  </section>
+
+  <!-- ===================== PHOTO GALLERY ===================== -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">📸 Memories</span>
+      <h2>A Life Well Lived</h2>
+      <p class="section-sub">Every photo tells a story. Every moment, a treasure.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-prev" onclick="lightboxNav(-1, event)">‹</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+    <button class="lightbox-next" onclick="lightboxNav(1, event)">›</button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <!-- ===================== CAROUSEL / SLIDER ===================== -->
+  <section class="slider-section">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">🎞️ Highlights</span>
+      <h2>Favourite Frames</h2>
+    </div>
+    <div class="slider-wrapper">
+      <div class="slider-track" id="sliderTrack"></div>
+      <button class="slider-btn prev" onclick="slideCarousel(-1)">‹</button>
+      <button class="slider-btn next" onclick="slideCarousel(1)">›</button>
+    </div>
+  </section>
+
+  <!-- ===================== TIMELINE ===================== -->
+  <section class="timeline-section" id="timeline">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">📅 Our Journey</span>
+      <h2>Moments That Matter</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item left" data-aos="fade-right">
+        <div class="timeline-dot">🌟</div>
+        <div class="timeline-card">
+          <span class="tl-year">Day One</span>
+          <h3>A Star Was Born</h3>
+          <p>The day you arrived changed everything. Our family became whole, our home became brighter, and our hearts grew bigger than we ever imagined possible.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-dot">🚀</div>
+        <div class="timeline-card">
+          <span class="tl-year">Childhood</span>
+          <h3>Adventures & Mischief</h3>
+          <p>Running barefoot, chasing dreams and each other through golden afternoons. Those carefree days shaped who we are — and I wouldn't trade a single second.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left" data-aos="fade-right">
+        <div class="timeline-dot">📚</div>
+        <div class="timeline-card">
+          <span class="tl-year">School Days</span>
+          <h3>Growing & Learning</h3>
+          <p>You tackled every challenge with that quiet determination of yours. Watching you grow into someone so capable and kind has been my greatest privilege.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-dot">💪</div>
+        <div class="timeline-card">
+          <span class="tl-year">Young Adult</span>
+          <h3>Finding Your Path</h3>
+          <p>You carved your own way with courage, integrity, and a fire inside you that no obstacle could extinguish. Your resilience has always inspired me.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left" data-aos="fade-right">
+        <div class="timeline-dot">🎂</div>
+        <div class="timeline-card">
+          <span class="tl-year">Today</span>
+          <h3>Your Special Day</h3>
+          <p>Today we celebrate YOU — every laugh, every scar, every dream, every victory. You deserve all the joy this world has to offer, and infinitely more.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== QUOTES ===================== -->
+  <section class="quotes-section" id="quotes">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">💬 Words From the Heart</span>
+      <h2>Said With Love</h2>
+    </div>
+    <div class="quotes-grid" id="quotesGrid"></div>
+  </section>
+
+  <!-- ===================== BIRTHDAY LETTER ===================== -->
+  <section class="letter-section" id="letter">
+    <div class="letter-wrapper" data-aos="fade-up">
+      <div class="letter-header">
+        <span class="letter-tag">✉️ A Letter For You</span>
+        <h2>Dear Ranjith A.E,</h2>
+      </div>
+      <div class="letter-body">
+        <p>There are some things in life that words simply cannot capture — the warmth of your laughter, the strength of your character, and the depth of the bond we share. But today, on your birthday, I want to try.</p>
+        <p>You have always been more than just a brother to me. ALWAYSSSS YOU MUST BE HAAPY THATS MY WISH You have been my companion in the quiet moments and my anchor in the storms. Growing up beside you taught me what it means to be brave, to be kind, and to stand firm in who you are — even when the world tries to bend you.</p>
+        <p>I have watched you face challenges that would have broken lesser people. I have seen you carry burdens without complaint, give without expectation, and love without condition. These are not small things, Ranjith. These are the qualities that make a person truly rare.</p>
+        <p>On this birthday, I don't just wish you happiness — I wish you the deep, settled kind of peace that comes from knowing you are loved. The kind of joy that fills a room when you enter it. The kind of success that reflects the genuine goodness of your heart.</p>
+        <p>The world is better with you in it. <em>Our world</em> is better with you in it. Never forget that.</p>
+        <p class="letter-closing">With all my love, always and forever,<br/><strong> Your Thangachiiiiiiii ❤️</strong></p>
+      </div>
+      <div class="letter-seal">❤️</div>
+    </div>
+  </section>
+
+  <!-- ===================== SURPRISE SECTION ===================== -->
+  <section class="surprise-section" id="surprise">
+    <div class="surprise-content" data-aos="zoom-in">
+      <div class="surprise-icon">🎁</div>
+      <h2>There's a Surprise Waiting…</h2>
+      <p>Something special, just for you.</p>
+      <button class="surprise-btn" onclick="openSurprise()">Open Your Surprise ✨</button>
+    </div>
+  </section>
+
+  <!-- ===================== SURPRISE POPUP ===================== -->
+  <div class="surprise-overlay" id="surpriseOverlay" onclick="closeSurprise()">
+    <div class="surprise-popup" onclick="event.stopPropagation()">
+      <canvas id="fireworksCanvas"></canvas>
+      <div class="popup-hearts" id="popupHearts"></div>
+      <button class="popup-close" onclick="closeSurprise()">✕</button>
+      <div class="popup-content">
+        <div class="popup-crown">👑</div>
+        <h2>Happy Birthday,<br/>Ranjith!</h2>
+        <p class="popup-msg">May this year bring you every dream you've ever held close, every happiness you've ever wished for, and every blessing you deserve. Become an <strong>A.E</strong> THIS YEAR 🎂✨</p>
+        <div class="popup-emojis">🎉 🎂 🥳 🎊 💛 🎁</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-glow"></div>
+    <div class="footer-content" data-aos="fade-up">
+      <div class="footer-heart">❤️</div>
+      <p class="footer-text">Made with endless love for my Amazing brother</p>
+      <p class="footer-name">RANJITH</p>
+      <div class="footer-icons">
+        <a href="#" class="social-icon" title="Instagram">📸</a>
+        <a href="#" class="social-icon" title="Facebook">💙</a>
+        <a href="#" class="social-icon" title="WhatsApp">💚</a>
+        <a href="#" class="social-icon" title="YouTube">❤️</a>
+      </div>
+      <p class="footer-copy">© 2025 — A Gift From the Heart</p>
+    </div>
+  </footer>
+
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
